@@ -13,7 +13,7 @@ import { App } from './App';
 import PeoplePage from './pages/PeoplePage';
 import NotFound from './pages/NotFound';
 import HomePage from './pages/HomePage';
-import { AppPath } from './types/paths';
+import { AppPath, PathParam } from './types/paths';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
@@ -21,7 +21,11 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path={AppPath.Home} element={<Navigate to="/" replace />} />
-        <Route path={AppPath.People} element={<PeoplePage />} />
+        <Route path={AppPath.People} element={<PeoplePage />}>
+          <Route path={`:${PathParam.Slug}`} element={<PeoplePage />} />
+          <Route path="*" element={<PeoplePage />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
