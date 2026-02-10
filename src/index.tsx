@@ -23,7 +23,6 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
         <Route path={AppPath.Home} element={<Navigate to="/" replace />} />
         <Route path={AppPath.People} element={<PeoplePage />}>
           <Route path={`:${PathParam.Slug}`} element={<PeoplePage />} />
-          <Route path="*" element={<PeoplePage />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
