@@ -21,7 +21,8 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path={AppPath.Home} element={<Navigate to="/" replace />} />
-        <Route path={AppPath.People} element={<PeoplePage />}>
+        <Route path={AppPath.People}>
+          <Route index element={<PeoplePage />} />
           <Route path={`:${PathParam.Slug}`} element={<PeoplePage />} />
         </Route>
 
